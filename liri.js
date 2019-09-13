@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 const bandsIntown = require("./concert");
 const spotifyThis = require("./spotify");
 const dowhat = require("./do");

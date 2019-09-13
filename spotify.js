@@ -12,7 +12,7 @@ spotify
   .search({ type: 'track', query: term })
   .then(function(response) {
    
-    for(let i = 0; i < 3; i++) {
+    for(let i = 0; i < 5; i++) {
       console.log(`
         Artist: ${response.tracks.items[i].artists[0].name}
         Song's Name: ${response.tracks.items[i].name}
