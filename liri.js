@@ -1,14 +1,15 @@
 require("dotenv").config();
+const fs =  require('fs');
 
 const bandsIntown = require("./concert");
 const spotifyThis = require("./spotify");
-const dowhat = require("./do");
 const moviethis = require("./concert");
 
 
-const task = process.argv[2];
-const term = process.argv[3];
+let task = process.argv[2];
+let term = process.argv[3];
 
+function runner (task, term){
 if (task === 'movie-this') {
   moviethis(term);
   
@@ -19,5 +20,25 @@ if (task === 'movie-this') {
   bandsIntown(term);
 
 } else if (task === 'do-what-it-says') {
-  dowhat(term);
+  dowhat();
 }
+}
+runner(task, term);
+
+function dowhat() {
+
+  
+  fs.readFile("random.txt", "utf8", function(error, data) {
+  
+    
+    if (error) {
+      return console.log(error);
+    }
+ 
+  const newData= data.split(",");
+  term = newData[1];
+  task = newData[0];
+  runner(task, term);
+  });
+  
+  }
